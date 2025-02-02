@@ -90,83 +90,83 @@ st.write("⬇️ please press button few time if the map does not show up")
 
 location = streamlit_geolocation()
 
-# # lon = location["latitude"]   #= -43.5053818
-# # lat = location["longitude"] #=:172.5837443
+lon = location["latitude"]   #= -43.5053818
+lat = location["longitude"] #=:172.5837443
 
-lon = -43.5053818
-lat = 172.5837443
+# lon = -43.5053818
+# lat = 172.5837443
 #lon,lat = location["longitude"], location["latitude"]
 st.write(lat,lon)
 
 
-st.markdown(
-    """
-    The following map shows the 5 nearest bird hotspots your location. 
+# st.markdown(
+#     """
+#     The following map shows the 5 nearest bird hotspots your location. 
     
-    **What is an eBird Hotspot?**
+#     **What is an eBird Hotspot?**
     
-    **Hotspots** are public birding locations created by eBird users where is the best place to go birding. 
+#     **Hotspots** are public birding locations created by eBird users where is the best place to go birding. 
     
-    The app will automatic calculate the 5 nearest hotspots to your location based on the recent uploaded hotspot coordinates. 
+#     The app will automatic calculate the 5 nearest hotspots to your location based on the recent uploaded hotspot coordinates. 
  
-"""
-)
+# """
+# )
 
-# #lon = -43.5053818
-# #lat = 172.5837443
-# Map = geemap.Map(center=(lat,lon), zoom=15)
-# Map.add_marker(location=(lat, lon), popup="You are here")
+# # #lon = -43.5053818
+# # #lat = 172.5837443
+# # Map = geemap.Map(center=(lat,lon), zoom=15)
+# # Map.add_marker(location=(lat, lon), popup="You are here")
 
-# Map.to_streamlit(width=800, height=300)
+# # Map.to_streamlit(width=800, height=300)
 
-url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
+# url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
 
-payload = {}
-headers = {
-    'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
-}
+# payload = {}
+# headers = {
+#     'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
+# }
 
-response = requests.request("GET", url, headers=headers, data=payload)
+# response = requests.request("GET", url, headers=headers, data=payload)
 
-# Example data
+# # Example data
 
-data = response.text
-# Split the data into lines
-lines = data.strip().split('\n')
+# data = response.text
+# # Split the data into lines
+# lines = data.strip().split('\n')
 
-# Extract coordinates from each line
-coordinates = []
-for line in lines:
-    parts = line.split(',')
-    latitude = float(parts[4])
-    longitude = float(parts[5])
-    coordinates.append((latitude, longitude))
+# # Extract coordinates from each line
+# coordinates = []
+# for line in lines:
+#     parts = line.split(',')
+#     latitude = float(parts[4])
+#     longitude = float(parts[5])
+#     coordinates.append((latitude, longitude))
 
-# Create a GeoDataFrame
-gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
+# # Create a GeoDataFrame
+# gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
 
-center = (lon,lat)
+# center = (lon,lat)
 
-center_point = Point(center)
+# center_point = Point(center)
 
-gdf['distance'] = gdf.distance(center_point)
+# gdf['distance'] = gdf.distance(center_point)
 
-# Set the CRS to WGS84 (EPSG:4326) before transforming
+# # Set the CRS to WGS84 (EPSG:4326) before transforming
 
-gdf.set_crs(epsg=4326, inplace=True)
-gdf.to_crs(epsg=4326, inplace=True)
+# gdf.set_crs(epsg=4326, inplace=True)
+# gdf.to_crs(epsg=4326, inplace=True)
 
-gdf['distance'] = gdf.distance(center_point)
+# gdf['distance'] = gdf.distance(center_point)
 
-# Find the nearest points
-nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
+# # Find the nearest points
+# nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
 
-# # Print the nearest points
-# print(nearest_points)
+# # # Print the nearest points
+# # print(nearest_points)
 
-Map = geemap.Map(center=(lon,lat), zoom=12)
-popup = widgets.HTML(value="Your Location")
-Map.add_marker(location=(lat,lon), popup=popup, name="Current Location")
-Map.add_gdf(nearest_points, "Nearest Hotspots")
+# Map = geemap.Map(center=(lon,lat), zoom=12)
+# popup = widgets.HTML(value="Your Location")
+# Map.add_marker(location=(lat,lon), popup=popup, name="Current Location")
+# Map.add_gdf(nearest_points, "Nearest Hotspots")
 
-Map.to_streamlit(width=800, height=600)
+# Map.to_streamlit(width=800, height=600)
