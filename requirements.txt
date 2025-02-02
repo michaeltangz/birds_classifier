@@ -16,7 +16,6 @@ geocoder==1.38.1
 geographiclib==2.0
 
 geopy==2.4.1
-
 google-api-core==2.24.1
 google-api-python-client==2.160.0
 google-auth==2.38.0
@@ -80,4 +79,5 @@ uritemplate==4.1.1
 
 webcolors==24.11.1
 webencodings==0.5.1
+torch
 
