@@ -81,3 +81,4 @@ webcolors==24.11.1
 webencodings==0.5.1
 torch
 transformers
+geopandas
