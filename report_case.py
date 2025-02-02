@@ -90,11 +90,13 @@ location = streamlit_geolocation()
 
 # lon = location["latitude"]   #= -43.5053818
 # lat = location["longitude"] #=:172.5837443
-lat,lon = location["longitude"], location["latitude"]
+#lat,lon = location["longitude"], location["latitude"]
+lon = -43.5053818
+lat = 172.5837443
 st.write(f"Your location is: {lon}, {lat}")
 
-# lon = -43.5053818
-# lat = 172.5837443
+#lon = -43.5053818
+#lat = 172.5837443
 Map = geemap.Map(center=(lon,lat), zoom=15)
 Map.add_marker(location=(lon, lat), popup="You are here")
 

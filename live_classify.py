@@ -92,7 +92,10 @@ location = streamlit_geolocation()
 
 # # lon = location["latitude"]   #= -43.5053818
 # # lat = location["longitude"] #=:172.5837443
-lon,lat = location["longitude"], location["latitude"]
+
+lon = -43.5053818
+lat = 172.5837443
+#lon,lat = location["longitude"], location["latitude"]
 st.write(lat,lon)
 
 
