@@ -44,7 +44,6 @@ jupyter-leaflet==0.19.2
 
 matplotlib==3.9.2
 
-mkl-service==2.4.0
 
 narwhals==1.24.1
 
