@@ -87,7 +87,7 @@ def convert_label(label):
 
 
 location = streamlit_geolocation()
-
+geemap.ee_initialize()
 # lon = location["latitude"]   #= -43.5053818
 # lat = location["longitude"] #=:172.5837443
 lat,lon = location["longitude"], location["latitude"]

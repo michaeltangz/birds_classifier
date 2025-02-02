@@ -14,6 +14,8 @@ import geemap.foliumap as geemap
 import geopandas as gpd
 from shapely.geometry import Point
 import ipywidgets as widgets
+import os
+os.environ["EARTHENGINE_TOKEN"] == st.secrets["EARTHENGINE_TOKEN"]
 
 st.title("Welcome to Bird Identification and Bird Observation Hotspot Finder")
 st.write("This page will help you identify bird species and find the best nearest bird ovbservation hotspots")
@@ -83,10 +85,14 @@ if thumbnail:
     st.image(thumbnail)
 
 st.write(f"🐤 **Discription:** {extract}")
-
-
+#EARTHENGINE_TOKEN = 'AIzaSyAQTdxrxn-K0UopmS82mSP4inkfd9ivRNI'
 st.write("⬇️ please press the button to get your current location")
 st.write("⬇️ please press button few time if the map does not show up")
+
+import ee 
+ee.Authenticate()
+ee.Initialize('/home/codespace/.config/earthengine/credentials')
+
 
 location = streamlit_geolocation()
 
@@ -167,3 +173,5 @@ Map.add_marker(location=(lat,lon), popup=popup, name="Current Location")
 Map.add_gdf(nearest_points, "Nearest Hotspots")
 
 Map.to_streamlit(width=800, height=600)
+
+#4/1ASVgi3JJNdYIVFea0vgFdzh8jPhbYN1Al0xhg4MHIHATdme4faSQKR6yZ4U
