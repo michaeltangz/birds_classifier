@@ -155,13 +155,18 @@ from shapely.geometry import Point
 import folium
 import streamlit as st
 from streamlit_folium import st_folium
+from streamlit_geolocation import streamlit_geolocation
 
 st.title("Bird Observation Hotspot Finder")
 st.write("This page will find the best 5 bird ovbservation hotspots near you")
 
+# Get the current location
+location = streamlit_geolocation()
 
-lon = 172.5837443
-lat = -43.5053818
+lat, lon = location["latitude"], location["longitude"]
+
+# lon = 172.5837443
+# lat = -43.5053818
 url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
 
 
