@@ -16,15 +16,15 @@ geocoder==1.38.1
 geographiclib==2.0
 
 geopy==2.4.1
-google-api-core==2.24.1
-google-api-python-client==2.160.0
-google-auth==2.38.0
-google-auth-httplib2==0.2.0
-google-cloud-core==2.4.1
-google-cloud-storage==3.0.0
-google-crc32c==1.6.0
-google-resumable-media==2.7.2
-googleapis-common-protos==1.66.0
+# google-api-core==2.24.1
+# google-api-python-client==2.160.0
+# google-auth==2.38.0
+# google-auth-httplib2==0.2.0
+# google-cloud-core==2.4.1
+# google-cloud-storage==3.0.0
+# google-crc32c==1.6.0
+# google-resumable-media==2.7.2
+# googleapis-common-protos==1.66.0
 
 httplib2==0.22.0
 
@@ -82,3 +82,6 @@ webencodings==0.5.1
 pytorch
 transformers
 geopandas
+folium
+shapely
+ipywidgets
