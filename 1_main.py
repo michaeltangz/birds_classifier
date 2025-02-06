@@ -10,7 +10,7 @@ st.title("HPAI Reporting Page")
 st.sidebar.success("Select a page to start")
 
 # add pic here
-st.image("h5n1.webp", use_column_width=True)
+st.image("h5n1.webp", use_container_width=True)
 
 st.markdown(
     """
