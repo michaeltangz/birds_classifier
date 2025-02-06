@@ -158,6 +158,7 @@ from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
 
 
+
 st.title("Bird Observation Hotspot Finder")
 st.write("This page will find the best 5 bird ovbservation hotspots near you")
 
