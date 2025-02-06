@@ -415,8 +415,8 @@ from streamlit_geolocation import streamlit_geolocation
 import logging
 
 def run():
-    st.title("Live Bird Identification")
-    st.write("Upload an image to classify the bird species.")
+    #st.title("Live Bird Identification")
+    #st.write("Upload an image to classify the bird species.")
 
 if __name__ == "__main__":
     run()
