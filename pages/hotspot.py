@@ -157,7 +157,9 @@ import streamlit as st
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
 
-
+def run():
+    st.title(".")
+    st.write("...")
 
 st.title("Bird Observation Hotspot Finder")
 st.write("This page will find the best 5 bird ovbservation hotspots near you")
@@ -242,9 +244,3 @@ for idx, row in nearest_points.iterrows():
 st_folium(m, width=600, height=400)
 
 
-def run():
-    #st.title(".")
-    st.write("This page will find the best 5 bird ovbservation hotspots near you")
-
-if __name__ == "__main__":
-    run()

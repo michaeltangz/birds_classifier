@@ -97,12 +97,3 @@ elif page == "HPAI Useful Info":
 
 
 
-# Hide Streamlit's default sidebar
-# hide_streamlit_style = """
-#     <style>
-#         [data-testid="stSidebarNav"] {display: none;}
-#     </style>
-# """
-# st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-

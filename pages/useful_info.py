@@ -12,6 +12,10 @@ import requests
 #from streamlit_geolocation import streamlit_geolocation
 #import geemap.foliumap as geemap
 
+def run():
+    st.title(".")
+    st.write("...")
+
 st.image("Masked.jpg", caption='HPAI', use_container_width=True)
 
 st.title("HPAI Useful Information")
@@ -26,9 +30,3 @@ st.write("WHO HPAI Info, please visit [here](https://iris.who.int/handle/10665/3
 
 st.write("For more birds Info, please visit [here](https://ebird.org/home)")
 
-def run():
-    #st.title(".")
-    st.write("...")
-
-if __name__ == "__main__":
-    run()

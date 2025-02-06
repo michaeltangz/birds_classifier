@@ -7,6 +7,9 @@ import numpy as np
 import soundfile as sf
 import requests
 
+def run():
+    st.title(".")
+    st.write("...")
 
 st.markdown("### This page will identify bird species by voice")
 st.write("Please upload the voice file of bird to identify the species")
@@ -67,9 +70,3 @@ if uploaded_file is not None:
         
     st.write(f"**Description:** {extract}")
 
-def run():
-    #st.title(".")
-    st.write("Upload an voice file to classify the bird species.")
-
-if __name__ == "__main__":
-    run()
