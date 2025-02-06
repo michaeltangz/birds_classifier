@@ -383,21 +383,24 @@ if uploaded_file is not None:
 
     st.write("⬇️ Please press the button to get your current location")
 
-    location = streamlit_geolocation()
 
-    if location and "latitude" in location and "longitude" in location:
-        lat, lon = location["latitude"], location["longitude"]
-        st.write(f"Your location is: {lat}, {lon}")
 
-        # Create a map centered at the current location
-        m = folium.Map(location=[lat, lon], zoom_start=12)
+location = streamlit_geolocation()
+if location and "latitude" in location and "longitude" in location:
+    lon = -43.5053818
+    lat = 172.5837443
+    lat, lon = location["latitude"], location["longitude"]
+    st.write(f"Your location is: {lat}, {lon}")
 
-        folium.Marker(
-            [lat, lon], 
-            popup="Current Location", 
-            icon=folium.Icon(color='red')  # Set marker color
-        ).add_to(m)
+    # Create a map centered at the current location
+    m = folium.Map(location=[lat, lon], zoom_start=12)
 
-        st_folium(m, width=600, height=400)
-    else:
-        st.write("Please enable location services and press the button to get your current location.")
+    folium.Marker(
+        [lat, lon], 
+        popup="Current Location", 
+        icon=folium.Icon(color='red')  # Set marker color
+    ).add_to(m)
+
+    st_folium(m, width=600, height=300)
+else:
+    st.write("Please enable location services and press the button to get your current location.")
