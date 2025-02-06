@@ -85,3 +85,4 @@ geopandas
 folium
 shapely
 ipywidgets
+logging
