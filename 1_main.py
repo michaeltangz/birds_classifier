@@ -9,6 +9,9 @@ st.title("HPAI Reporting Page")
 
 st.sidebar.success("Select a page to start")
 
+# add pic here
+st.image("https://images.app.goo.gl/bPzpSKJJ51dhxwJ79", use_column_width=True)
+
 st.markdown(
     """
 
