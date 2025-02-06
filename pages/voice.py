@@ -7,9 +7,6 @@ import numpy as np
 import soundfile as sf
 import requests
 
-def run():
-    st.title(".")
-    st.write("...")
 
 st.markdown("### This page will identify bird species by voice")
 st.write("Please upload the voice file of bird to identify the species")

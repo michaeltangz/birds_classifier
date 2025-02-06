@@ -506,9 +506,3 @@ if uploaded_file is not None:
     else:
         st.write("Please enable location services and press the button to get your current location.")
 
-def run():
-    #st.title(".")
-    st.write("Upload an image to classify the bird species.")
-
-if __name__ == "__main__":
-    run()

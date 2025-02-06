@@ -46,21 +46,21 @@ import streamlit as st
 st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
 
 # Sidebar Navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio(
-    "Go to", 
-    ["Home", "Live Bird Identification", "Voice Classification", "Report HPAI Case", "Hotspot Finder", "HPAI Useful Info"]
-)
+#st.sidebar.title("Navigation")
+# page = st.sidebar.radio(
+#     "Go to", 
+#     ["Home", "Live Bird Identification", "Voice Classification", "Report HPAI Case", "Hotspot Finder", "HPAI Useful Info"]
+# )
 
 # Display the selected page
-if page == "Home":
-    st.title("HPAI Reporting Page")
-    st.sidebar.success("Select a page to start")
+
+st.title("HPAI Reporting Page")
+st.sidebar.success("Select a page to start")
 
     # Add image
-    st.image("h5n1.webp", use_container_width=True)
+st.image("h5n1.webp", use_container_width=True)
 
-    st.markdown(
+st.markdown(
         """
         <br> This App can help you to identify the bird species and report the suspicious HPAI case.  
 
@@ -74,25 +74,25 @@ if page == "Home":
         """, unsafe_allow_html=True
     )
 
-elif page == "Live Bird Identification":
-    import pages.live_classify as live_classify
-    live_classify.run()
+# elif page == "Live Bird Identification":
+#     import pages.live_classify as live_classify
+#     live_classify.run()
 
-elif page == "Voice Classification":
-    import pages.voice as voice
-    voice.run()
+# elif page == "Voice Classification":
+#     import pages.voice as voice
+#     voice.run()
 
-elif page == "Report HPAI Case":
-    import pages.report_case as report_case
-    report_case.run()
+# elif page == "Report HPAI Case":
+#     import pages.report_case as report_case
+#     report_case.run()
 
-elif page == "Hotspot Finder":
-    import pages.hotspot as hotspot
-    hotspot.run()
+# elif page == "Hotspot Finder":
+#     import pages.hotspot as hotspot
+#     hotspot.run()
 
-elif page == "HPAI Useful Info":
-    import pages.useful_info as useful_info
-    useful_info.run()
+# elif page == "HPAI Useful Info":
+#     import pages.useful_info as useful_info
+#     useful_info.run()
 
 
 
