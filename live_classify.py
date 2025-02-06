@@ -189,3 +189,15 @@ if uploaded_file is not None:
         st.write(f"Your location is: {lat}, {lon}")
     else:
         st.write("Please enable location services and press the button to get your current location.")
+
+#st.write(lat,lon)
+# Create a map centered at the current location
+m = folium.Map(location=[lat, lon], zoom_start=12)
+
+folium.Marker(
+    [lat, lon], 
+    popup="Current Location", 
+    icon=folium.Icon(color='red')  # Set marker color
+).add_to(m)
+
+st_folium(m, width=600, height=400)
