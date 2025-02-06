@@ -244,7 +244,7 @@ st_folium(m, width=600, height=400)
 
 def run():
     #st.title(".")
-    st.write("")
+    st.write(".")
 
 if __name__ == "__main__":
     run()
