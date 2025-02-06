@@ -1,112 +1,127 @@
-from matplotlib.pylab import f
-import streamlit as st
-import pandas as pd
-import numpy as np
-import pickle
-import torch
-import urllib.request
-from PIL import Image
-from transformers import pipeline
-import requests
-import geemap
+# from matplotlib.pylab import f
+# import streamlit as st
+# import pandas as pd
+# import numpy as np
+# import pickle
+# import torch
+# import urllib.request
+# from PIL import Image
+# from transformers import pipeline
+# import requests
+# import geemap
+# from streamlit_folium import st_folium
+# from streamlit_geolocation import streamlit_geolocation
+
+
+
+# st.markdown("## Report the suspicious HPAI case")
+# #st.write("You can report the suspicious HPAI case to Authority")
+# st.markdown("### You can upload multiple images")
+
+# # Create a file image uploader
+# uploaded_file = st.file_uploader("Choose an image...", type="jpg")
+
+
+# if uploaded_file:
+#     # Loading the model and preprocessor using Pipeline
+#     pipe = pipeline("image-classification", model="chriamue/bird-species-classifier")
+
+#     for uploaded_file in uploaded_file:
+#         # Open the image using PIL
+#         img = Image.open(uploaded_file)
+
+#         # Display the uploaded image
+#         st.image(img, caption='Uploaded Image.', use_container_width=True)
+
+#         # Running the inference
+#         result = pipe(img)[0]
+#         label = result['label']
+
+#         # Displaying the result label
+#         st.write(f"**Prediction: {result['label']}**")
+
+
+
+# def convert_label(label):
+#     return st.write(label.replace(" ", " ").lower())
+
+# st.write("⬇️ please press the button to get your current location")
+
+# location = streamlit_geolocation()
+
+# lat,lon = location["longitude"], location["latitude"]
+
+# #st.markdown(f"#### Your location is: {lon}, {lat}")
+
+# st.write(f"The suspicious HPAI case:  **{label}**  at location: {lon}, {lat}")
+
+# st.write("To better help us understand the case, you can upload more images of the dead bird")
+# st.write("Please take the photo from different angle, keep a **safe distance** and **do not touch** the dead bird")
+
+# st.write("You can upload multiple images from here")
+# uploaded_files = st.file_uploader("Choose an image...", type="jpg", accept_multiple_files=True)
+
+
+# st.write("Press the button to report the suspicious HPAI case")
+
+# # Create a button to report the label and location
+# if st.button("Report"):
+    
+#     st.markdown("### Thank you for report. we will review your report shortly.")
+
+
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
 import geemap.foliumap as geemap
+import streamlit as st
+from PIL import Image
+from transformers import pipeline
+
+st.markdown("## Report the suspicious HPAI case")
+st.markdown("### You can upload multiple images")
+st.write("To better help us understand the case, you can upload more images of the dead bird")
+st.write("Please take picture with different angles, keep a **safe distance** and **do not touch** the dead bird")
 
 
-st.title("Reporting the suspicious HPAI case")
-st.write("This page will help you identify dead bird and help you report the suspicious HPAI case to Authority")
-st.write("please upload the image of dead bird")
+# Create a file image uploader that accepts multiple files
+uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
 
-# Create a file image uploader
-uploaded_file = st.file_uploader("Choose an image...", type="jpg")
-
-if uploaded_file is not None:
-    # Open the image using PIL
-    img = Image.open(uploaded_file)
-
-    # Display the uploaded image
-    st.image(img, caption='Uploaded Image.',  use_container_width=True)
-
+if uploaded_files:
     # Loading the model and preprocessor using Pipeline
     pipe = pipeline("image-classification", model="chriamue/bird-species-classifier")
 
-    # Running the inference
-    result = pipe(img)[0]
+    labels = []  # List to store labels for all uploaded images
 
-    # Displaying the result label
-    #st.write(f"Prediction: {result['label']}")
+    for uploaded_file in uploaded_files:
+        # Open the image using PIL
+        img = Image.open(uploaded_file)
 
-# import pipeline model
-# Load model directly
-# Load model directly
-# Use a pipeline as a high-level helper
-#from transformers import pipeline
+        # Display the uploaded image
+        st.image(img, caption='Uploaded Image.', use_container_width=True)
 
-label = result['label']
-st.write(f"**Prediction: {result['label']}**")
+        # Running the inference
+        result = pipe(img)[0]
 
-def convert_label(label):
-    return st.write(label.replace(" ", " ").lower())
+        # Displaying the result label
+        st.write(f"**Prediction: {result['label']}**")
+        labels.append(result['label'])  # Store the label
 
+    def convert_label(label):
+        return label.replace(" ", "_").lower()
 
+    st.write("⬇️ Please press the button to get your current location")
 
-# import requests
+    location = streamlit_geolocation()
 
-# # Define the parameters
-# params = {
-#     "action": "query",
-#     "format": "json",
-#     "titles": f"{convert_label(label)}",
-#     "prop": "extracts|pageimages",
-#     "exintro": True,
-#     "explaintext": True,
-#     "pithumbsize": 500  # Set the thumbnail size
-# }
+    if location:
+        lat, lon = location["latitude"], location["longitude"]
+        st.write(f"The suspicious HPAI case: **{', '.join(labels)}** at location: {lat}, {lon}")
 
-# # Define the endpoint
-# endpoint = "https://en.wikipedia.org/w/api.php"
+       
+        st.write("Press the button to report the suspicious HPAI case")
 
-# # Make the request
-# response = requests.get(endpoint, params=params)
-
-# # Parse the response
-# data = response.json()
-
-# # Extract the page content
-# page = next(iter(data['query']['pages'].values()))
-# extract = page.get('extract', 'No extract available')
-# thumbnail = page.get('thumbnail', {}).get('source', None)
-
-# Display the result
-# print(f"Description: {extract}")
-# if thumbnail:
-#     print(f"Thumbnail URL: {thumbnail}")
-
-
-
-
-location = streamlit_geolocation()
-#geemap.ee_initialize()
-# lon = location["latitude"]   #= -43.5053818
-# lat = location["longitude"] #=:172.5837443
-lat,lon = location["longitude"], location["latitude"]
-#lon = -43.5053818
-#lat = 172.5837443
-st.write(f"Your location is: {lon}, {lat}")
-
-# #lon = -43.5053818
-# #lat = 172.5837443
-# Map = geemap.Map(center=(lon,lat), zoom=15)
-# Map.add_marker(location=(lon, lat), popup="You are here")
-
-# Map.to_streamlit(width=800, height=300)
-
-st.write(f"The suspicious HPAI case:  **{label}**  at location: {lon}, {lat}")
-
-st.write("Please press the button to report the suspicious HPAI case")
-
-# Create a button to report the label and location
-if st.button("Report"):
-    
-    st.write("Thank you for report. The Authority will review your report shortly.")
+        # Create a button to report the label and location
+        if st.button("Report"):
+            st.markdown("### Thank you for your report. We will review your report shortly.")
+    else:
+        st.write("Please enable location services and press the button to get your current location.")

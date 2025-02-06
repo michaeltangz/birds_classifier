@@ -8,8 +8,8 @@ import soundfile as sf
 import requests
 
 
-st.title("This page will help you identify bird species based on voice")
-st.write("please upload the voice file of bird to identify the species")
+st.markdown("### This page will identify bird species by voice")
+st.write("Please upload the voice file of bird to identify the species")
 uploaded_file = st.file_uploader("Choose a voice file...", type="wav")
 #################voice file 
 if uploaded_file is not None:
@@ -42,10 +42,10 @@ if uploaded_file is not None:
         "action": "query",
         "format": "json",
         "titles": f"{result_voice[0]['label'].lower()}",
-        "prop": "extracts|pageimages",
+        "prop": "extracts",
         "exintro": True,
         "explaintext": True,
-        "pithumbsize": 600  # Set the thumbnail size
+        #"pithumbsize": 600  # Set the thumbnail size
     }
 
     # Make the request
