@@ -192,6 +192,8 @@ if uploaded_file is not None:
 
 #st.write(lat,lon)
 # Create a map centered at the current location
+location = streamlit_geolocation()
+lat, lon = location["latitude"], location["longitude"]
 m = folium.Map(location=[lat, lon], zoom_start=12)
 
 folium.Marker(
