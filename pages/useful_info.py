@@ -28,7 +28,7 @@ st.write("For more birds Info, please visit [here](https://ebird.org/home)")
 
 def run():
     #st.title(".")
-    st.write(".")
+    st.write("...")
 
 if __name__ == "__main__":
     run()
