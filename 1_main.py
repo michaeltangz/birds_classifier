@@ -7,7 +7,11 @@ st.set_page_config(
 
 st.title("HPAI Reporting Page")
 
-st.sidebar.success("Select a page to start")
+#st.sidebar.success("Select a page to start")
+
+st.sidebar.title('Navigation')
+page = st.sidebar.radio("Go to", ["Live Bird Identify", "Report Dead Bird Case", "Hotspot Finder", "Useful HPAI Information"])
+
 
 # add pic here
 st.image("h5n1.webp", use_container_width=True)
