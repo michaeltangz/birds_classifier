@@ -282,6 +282,8 @@ if uploaded_file is not None:
             st.write(f"Error: {e}")
 
     st.write("⬇️ Please press the button to get your current location")
+    lon = -43.5053818
+    lat = 172.5837443
 
     location = streamlit_geolocation()
 
