@@ -42,10 +42,10 @@ if uploaded_file is not None:
         "action": "query",
         "format": "json",
         "titles": f"{result_voice[0]['label'].lower()}",
-        "prop": "extracts",
+        "prop": "extracts|pageimages",
         "exintro": True,
         "explaintext": True,
-        #"pithumbsize": 600  # Set the thumbnail size
+        "pithumbsize": 600  # Set the thumbnail size
     }
 
     # Make the request
