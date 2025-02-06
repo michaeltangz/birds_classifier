@@ -414,13 +414,6 @@ from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
 import logging
 
-def run():
-    #st.title("Live Bird Identification")
-    #st.write("Upload an image to classify the bird species.")
-
-if __name__ == "__main__":
-    run()
-
 # Configure logging
 logging.basicConfig(level=logging.ERROR)
 
@@ -512,3 +505,10 @@ if uploaded_file is not None:
         st_folium(m, width=600, height=300)
     else:
         st.write("Please enable location services and press the button to get your current location.")
+
+def run():
+    #st.title(".")
+    st.write("Upload an image to classify the bird species.")
+
+if __name__ == "__main__":
+    run()

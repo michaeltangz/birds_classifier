@@ -67,4 +67,9 @@ if uploaded_file is not None:
         
     st.write(f"**Description:** {extract}")
 
-    
+def run():
+    #st.title(".")
+    st.write("Upload an voice file to classify the bird species.")
+
+if __name__ == "__main__":
+    run()

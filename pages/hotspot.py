@@ -242,3 +242,9 @@ for idx, row in nearest_points.iterrows():
 st_folium(m, width=600, height=400)
 
 
+def run():
+    #st.title(".")
+    st.write("")
+
+if __name__ == "__main__":
+    run()

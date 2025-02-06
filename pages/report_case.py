@@ -125,3 +125,10 @@ if uploaded_files:
             st.markdown("### Thank you for your report. We will review your report shortly.")
     else:
         st.write("Please enable location services and press the button to get your current location.")
+
+def run():
+    #st.title(".")
+    st.write("Upload an image to classify the dead bird species to help us understand the proteintial HPAI case")
+
+if __name__ == "__main__":
+    run()
