@@ -12,7 +12,7 @@ import requests
 #from streamlit_geolocation import streamlit_geolocation
 #import geemap.foliumap as geemap
 
-
+st.image("Masked.jpg", caption='HPAI', use_container_width=True)
 
 st.title("HPAI Useful Information")
 
