@@ -41,38 +41,38 @@
 
 # pg.run()
 
-import streamlit as st
-from newsapi import NewsApiClient
-st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
+# import streamlit as st
+# from newsapi import NewsApiClient
+# st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
 
-# Sidebar Navigation
-#st.sidebar.title("Navigation")
-# page = st.sidebar.radio(
-#     "Go to", 
-#     ["Home", "Live Bird Identification", "Voice Classification", "Report HPAI Case", "Hotspot Finder", "HPAI Useful Info"]
-# )
+# # Sidebar Navigation
+# #st.sidebar.title("Navigation")
+# # page = st.sidebar.radio(
+# #     "Go to", 
+# #     ["Home", "Live Bird Identification", "Voice Classification", "Report HPAI Case", "Hotspot Finder", "HPAI Useful Info"]
+# # )
 
-# Display the selected page
+# # Display the selected page
 
-st.title("HPAI Reporting Page")
-st.sidebar.success("Select a page to start")
+# st.title("HPAI Reporting Page")
+# st.sidebar.success("Select a page to start")
 
-    # Add image
-st.image("h5n1.webp", use_container_width=True)
+#     # Add image
+# st.image("h5n1.webp", use_container_width=True)
 
-st.markdown(
-        """
-        <br> This App can help you to identify the bird species and report the suspicious HPAI case.  
+# st.markdown(
+#         """
+#         <br> This App can help you to identify the bird species and report the suspicious HPAI case.  
 
-        **Live Bird Identify**<br> Classify the bird species based on the **image & voice**  
+#         **Live Bird Identify**<br> Classify the bird species based on the **image & voice**  
 
-        **Report Dead Bird Case**<br> Classify the Dead bird species and report the potential HPAI case.  
+#         **Report Dead Bird Case**<br> Classify the Dead bird species and report the potential HPAI case.  
 
-        **Hotspot Finder**<br> Find the nearest bird observation hotspot near you.  
+#         **Hotspot Finder**<br> Find the nearest bird observation hotspot near you.  
 
-        **Useful HPAI Information**<br> This page provides relevant HPAI information.
-        """, unsafe_allow_html=True
-    )
+#         **Useful HPAI Information**<br> This page provides relevant HPAI information.
+#         """, unsafe_allow_html=True
+#     )
 
 # elif page == "Live Bird Identification":
 #     import pages.live_classify as live_classify
