@@ -11,7 +11,7 @@ import requests
 #from streamlit_folium import st_folium
 #from streamlit_geolocation import streamlit_geolocation
 #import geemap.foliumap as geemap
-
+from newsapi import NewsApiClient
 # def run():
 #     st.title(".")
 #     st.write("...")

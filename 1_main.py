@@ -42,7 +42,7 @@
 # pg.run()
 
 import streamlit as st
-
+from newsapi import NewsApiClient
 st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
 
 # Sidebar Navigation
@@ -93,7 +93,6 @@ st.markdown(
 # elif page == "HPAI Useful Info":
 #     import pages.useful_info as useful_info
 #     useful_info.run()
-
 
 
 

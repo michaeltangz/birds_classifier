@@ -76,7 +76,7 @@ import geemap.foliumap as geemap
 import streamlit as st
 from PIL import Image
 from transformers import pipeline
-
+from newsapi import NewsApiClient
 st.markdown("## Report the suspicious HPAI case")
 st.markdown("### You can upload multiple images")
 st.write("To better help us understand the case, you can upload more images of the dead bird")

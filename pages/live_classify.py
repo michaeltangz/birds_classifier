@@ -17,7 +17,7 @@ import ipywidgets as widgets
 import os
 import folium
 import requests
-
+from newsapi import NewsApiClient
 # #os.environ["EARTHENGINE_TOKEN"] == st.secrets["EARTHENGINE_TOKEN"]
 
 # st.markdown("## Welcome to Bird Identification Page") 

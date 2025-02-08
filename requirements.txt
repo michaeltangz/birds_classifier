@@ -86,3 +86,4 @@ folium
 shapely
 ipywidgets
 logging
+newsapi-python

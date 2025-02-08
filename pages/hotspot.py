@@ -156,7 +156,7 @@ import folium
 import streamlit as st
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
-
+from newsapi import NewsApiClient
 
 
 st.title("Bird Observation Hotspot Finder")
