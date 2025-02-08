@@ -1,6 +1,6 @@
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
-import geemap.foliumap as geemap
+#import geemap.foliumap as geemap
 import streamlit as st
 from transformers import pipeline
 import numpy as np
@@ -8,8 +8,8 @@ import soundfile as sf
 import requests
 
 
-st.markdown("### This page will identify bird species by voice")
-st.write("Please upload the voice file of bird to identify the species")
+st.title("Bird Species Identification by Sound")
+st.write("👉 This page will identify bird species by voice, Please upload the voice file of bird to identify the species")
 uploaded_file = st.file_uploader("Choose a voice file...", type="wav")
 #################voice file 
 if uploaded_file is not None:

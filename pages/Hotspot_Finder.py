@@ -160,7 +160,7 @@ from streamlit_geolocation import streamlit_geolocation
 
 
 st.title("Bird Observation Hotspot Finder")
-st.write("This page will find the best 5 bird ovbservation hotspots near you")
+st.write("👉 This page will find the Top 5 bird observation hotspots near you, based on the latest user data from eBird.com ")
 
 # Get the current location
 location = streamlit_geolocation()

@@ -2,7 +2,7 @@
 from newsapi import NewsApiClient
 import streamlit as st
 
-st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
+#st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
 
 # Sidebar Navigation
 #st.sidebar.title("Navigation")
@@ -13,8 +13,10 @@ st.set_page_config(page_title="HPAI Reporting Page", layout="wide")
 
 # Display the selected page
 
-st.title("HPAI Case Reporting Page")
+#st.title("HPAI Case Reporting Page")
 st.sidebar.success("Select a page to start")
+st.sidebar.image("ESR_New_Zealand_logo.jpg")
+st.sidebar.image("University of Canterbury.png")
 
 
 
@@ -33,11 +35,11 @@ st.sidebar.success("Select a page to start")
 #     )
 
 
-st.markdown("##### This App can help you to identify the bird species and report the suspicious HPAI case.")
+#st.markdown("##### This app helps you identify bird species and report potential HPAI cases.")
 
-st.write("---------------------------------------------------")
+#st.write("---------------------------------------------------")
 
-st.markdown("## The HPAI News & Updates") 
+st.title("Latest HPAI News & Updates") 
 
 api = NewsApiClient(api_key='e60e86de537341c990eed3f202a2f9f4')
 
@@ -80,12 +82,12 @@ api = NewsApiClient(api_key='e60e86de537341c990eed3f202a2f9f4')
 
 bird_flu_news = api.get_everything(q='bird flu', language='en')
 
-for article in bird_flu_news['articles'][:6]:
-    st.markdown(f"#### {article['title']}")
+for article in bird_flu_news['articles'][:10]:
+    st.markdown(f"##### ⚠️ {article['title']}")
     # Convert publishedAt to datetime
     published_at = datetime.strptime(article['publishedAt'], '%Y-%m-%dT%H:%M:%SZ')
     formatted_date = published_at.strftime('%Y-%m-%d')
-    st.write(f"**Date:** {formatted_date}")
+    st.write(f"**Date: {formatted_date}**")
  
     #st.write(f"Date: {article['publishedAt']}") 
     if article['urlToImage']:

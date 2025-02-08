@@ -72,16 +72,15 @@
 
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
-import geemap.foliumap as geemap
+#import geemap.foliumap as geemap
 import streamlit as st
 from PIL import Image
 from transformers import pipeline
 
-st.markdown("## Report the suspicious HPAI case")
-st.markdown("### You can upload multiple images")
-st.write("To better help us understand the case, you can upload more images of the dead bird")
-st.write("Please take picture with different angles, keep a **safe distance** and **do not touch** the dead bird")
-
+st.title("Report a suspicious HPAI case")
+#st.markdown("### You can upload multiple images")
+st.write("👉 **To help us assess the case, you may upload additional images of the dead bird.**")
+st.write("👉 **Note: If you upload additional images, please take pictures from different angles, maintain a **safe distance**, and **avoid touching** the dead bird.**")
 
 # Create a file image uploader that accepts multiple files
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
@@ -126,9 +125,9 @@ if uploaded_files:
     else:
         st.write("Please enable location services and press the button to get your current location.")
 
-def run():
-    #st.title(".")
-    st.write("Upload an image to classify the dead bird species to help us understand the proteintial HPAI case")
+# def run():
+#     #st.title(".")
+#     st.write("Upload an image to classify the dead bird species to help us understand the proteintial HPAI case")
 
-if __name__ == "__main__":
-    run()
+# if __name__ == "__main__":
+#     run()

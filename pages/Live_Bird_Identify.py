@@ -10,7 +10,7 @@ import requests
 #import geemap
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
-import geemap.foliumap as geemap
+#import geemap.foliumap as geemap
 import geopandas as gpd
 from shapely.geometry import Point
 import ipywidgets as widgets
@@ -417,9 +417,9 @@ import logging
 # Configure logging
 logging.basicConfig(level=logging.ERROR)
 
-st.markdown("<h1 style='font-size: 20px;'>Welcome to Bird Identification Page</h1>", unsafe_allow_html=True)
-st.write("This page will help you identify bird species and find the best nearest bird observation hotspots")
-st.write("Please upload the image file of bird to identify the species")
+st.title("Bird Species Identification")
+st.write("👉 This page helps you identify bird species and tells you about them.")
+#st.write("Please upload the image file of bird to identify the species")
 
 # Create a file image uploader
 uploaded_file = st.file_uploader("Choose an image...", type="jpg")
