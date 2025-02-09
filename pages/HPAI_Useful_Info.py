@@ -19,7 +19,9 @@ import requests
 #st.image("Masked.jpg", caption='HPAI', use_container_width=True)
 
 st.title("HPAI Useful Information")
-st.image("h5n1.webp", use_container_width=True)
+#st.image("h5n1.webp", use_container_width=True)
+# embed a youtube video
+st.video("https://www.youtube.com/watch?v=NwK1R71xUBI")
 
 st.write("👉 For more New Zealand HPAI information, please visit Health New Zealand [here](https://www.tewhatuora.govt.nz/for-health-professionals/clinical-guidance/communicable-disease-control-manual/avian-influenza)")
 
