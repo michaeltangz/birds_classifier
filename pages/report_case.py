@@ -120,7 +120,7 @@ if uploaded_files:
         st.write(f"**Time:** {current_time}")
 
        
-        st.write("Press the button to report the suspicious HPAI case")
+        st.write("**Press the button to report the suspicious HPAI case**")
 
         # Create a button to report the label and location
         if st.button("Report"):

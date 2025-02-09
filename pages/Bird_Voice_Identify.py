@@ -8,7 +8,7 @@ import soundfile as sf
 import requests
 
 
-st.title("Bird Species Identification by Sound")
+st.title("Bird Species Classify by Sound")
 st.write("👉 This page will identify bird species by voice, Please upload the voice file of bird to identify the species")
 uploaded_file = st.file_uploader("Choose a voice file...", type="wav")
 #################voice file 
