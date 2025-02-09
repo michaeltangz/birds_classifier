@@ -76,6 +76,7 @@ from streamlit_geolocation import streamlit_geolocation
 import streamlit as st
 from PIL import Image
 from transformers import pipeline
+from datetime import datetime
 
 st.title("Report a suspicious HPAI case")
 #st.markdown("### You can upload multiple images")
@@ -111,8 +112,7 @@ if uploaded_files:
     st.write("⬇️ Please press the button to get your current location")
 
     location = streamlit_geolocation()
-    time = location["timestamp"]
-
+    time = current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if location:
         lat, lon = location["latitude"], location["longitude"]
         st.write(f"The suspicious HPAI case: **{', '.join(labels)}** at location: {lat}, {lon}, Time: {time}")
