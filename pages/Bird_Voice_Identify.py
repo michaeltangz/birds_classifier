@@ -30,9 +30,13 @@ if uploaded_file is not None:
     pipe_voice = pipeline("audio-classification", model="dima806/bird_sounds_classification")
     # Running the inference
     result_voice = pipe_voice(audio_array)
+    label=result_voice[0]['label']
 
     # Displaying the result label
     st.write(f"**Prediction: {result_voice[0]['label']}**")
+    def convert_label(label):
+        return label.replace(" ", "_").lower()
+    st.write(f"👉 [More about {label}](https://en.wikipedia.org/wiki/{convert_label(label)})")
 
     # Define the endpoint
     endpoint = "https://en.wikipedia.org/w/api.php"
