@@ -478,6 +478,7 @@ if uploaded_file is not None:
 
             # Display the description
             st.write(f"🐤 **Description:** {' '.join(extract.split('.')[:3])}.")
+            st.write(f"👉 [More about {label}](https://en.wikipedia.org/wiki/{label})")
 
         except requests.exceptions.RequestException as e:
             st.write("Failed to retrieve data from Wikipedia API")
@@ -485,24 +486,8 @@ if uploaded_file is not None:
         except ValueError as e:
             logging.error("Failed to parse JSON response from Wikipedia API", exc_info=True)
 
-    st.write("⬇️ Please press the button to get your current location")
 
-    location = streamlit_geolocation()
+# add links to wikipedia with the bird name
 
-    if location and "latitude" in location and "longitude" in location:
-        lat, lon = location["latitude"], location["longitude"]
-        st.write(f"Your location is: {lat}, {lon}")
-
-        # Create a map centered at the current location
-        m = folium.Map(location=[lat, lon], zoom_start=12)
-
-        folium.Marker(
-            [lat, lon], 
-            popup="Current Location", 
-            icon=folium.Icon(color='red')  # Set marker color
-        ).add_to(m)
-
-        st_folium(m, width=600, height=300)
-    else:
-        st.write("Please enable location services and press the button to get your current location.")
+ 
 

@@ -111,10 +111,11 @@ if uploaded_files:
     st.write("⬇️ Please press the button to get your current location")
 
     location = streamlit_geolocation()
+    time = location["timestamp"]
 
     if location:
         lat, lon = location["latitude"], location["longitude"]
-        st.write(f"The suspicious HPAI case: **{', '.join(labels)}** at location: {lat}, {lon}")
+        st.write(f"The suspicious HPAI case: **{', '.join(labels)}** at location: {lat}, {lon}, Time: {time}")
 
        
         st.write("Press the button to report the suspicious HPAI case")

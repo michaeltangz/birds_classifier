@@ -147,7 +147,183 @@
 
 # # Display the map in Streamlit
 # st_folium(m, width=800, height=600)
+#_________________________________________________________________________________________________________________________
 
+# import requests
+# import geopandas as gpd
+# from shapely.geometry import Point
+# import folium
+# import streamlit as st
+# from streamlit_folium import st_folium
+# from streamlit_geolocation import streamlit_geolocation
+
+
+
+# st.title("Bird Observation Hotspot Finder")
+# st.write("👉 This page will find the Top 5 bird observation hotspots near you, based on the latest user data from eBird.com ")
+
+# # Get the current location
+# location = streamlit_geolocation()
+
+# lat, lon = location["latitude"], location["longitude"]
+
+# # lon = 172.5837443
+# # lat = -43.5053818
+# url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
+
+
+
+# payload = {}
+# headers = {
+#     'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
+# }
+
+# response = requests.request("GET", url, headers=headers, data=payload)
+# #st.write(response.text)
+
+# data = response.text
+# # Split the data into lines
+# lines = data.strip().split('\n')
+
+# # Extract coordinates from each line
+# coordinates = []
+# locations = []
+# for line in lines:
+#     parts = line.split(',')
+#     latitude = float(parts[4])
+#     longitude = float(parts[5])
+#     coordinates.append((latitude, longitude))
+#     locations.append(parts[6])
+
+# #st.write(coordinates)
+# #st.write(locations)
+
+# # Create a GeoDataFrame
+# gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
+
+# # add the location name into gdf
+# gdf['location'] = locations
+
+# center = (lon,lat)
+
+# center_point = Point(center)
+
+# gdf['distance'] = gdf.distance(center_point)
+
+# # Set the CRS to WGS84 (EPSG:4326) before transforming
+
+# gdf.set_crs(epsg=4326, inplace=True)
+# gdf.to_crs(epsg=4326, inplace=True)
+
+# gdf['distance'] = gdf.distance(center_point)
+
+# # Find the nearest points
+# nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
+
+# #st.write(nearest_points)
+
+# m = folium.Map(location=[lat, lon], zoom_start=12)
+
+# folium.Marker(
+#     [lat, lon], 
+#     popup="Current Location", 
+#     icon=folium.Icon(color='red')  # Set marker color
+# ).add_to(m)
+
+# # plot the nearest points
+# for idx, row in nearest_points.iterrows():
+#     folium.Marker(
+#         location=[row.geometry.y, row.geometry.x],
+#         popup=f"{row['location'].split('-')[-1]}",
+#         icon=folium.Icon(color='blue')
+#     ).add_to(m)
+
+# # Display the map in Streamlit
+# st_folium(m, width=600, height=400)
+
+
+# import requests
+# import geopandas as gpd
+# from shapely.geometry import Point
+# import folium
+# import streamlit as st
+# from streamlit_folium import st_folium
+# from streamlit_geolocation import streamlit_geolocation
+
+# st.title("Bird Observation Hotspot Finder")
+# st.write("👉 This page will find the Top 5 bird observation hotspots near you, based on the latest user data from eBird.com ")
+
+# # Get the current location
+# location = streamlit_geolocation()
+
+# if location and "latitude" in location and "longitude" in location:
+#     lat, lon = location["latitude"], location["longitude"]
+
+#     url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
+
+#     payload = {}
+#     headers = {
+#         'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
+#     }
+
+#     response = requests.request("GET", url, headers=headers, data=payload)
+#     data = response.text
+
+#     # Split the data into lines
+#     lines = data.strip().split('\n')
+
+#     # Extract coordinates from each line
+#     coordinates = []
+#     locations = []
+#     for line in lines:
+#         parts = line.split(',')
+#         latitude = float(parts[4])
+#         longitude = float(parts[5])
+#         coordinates.append((latitude, longitude))
+#         locations.append(parts[6])
+
+#     # Create a GeoDataFrame
+#     gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
+
+#     # Add the location name into gdf
+#     gdf['location'] = locations
+
+#     center = (lon, lat)
+#     center_point = Point(center)
+
+#     gdf['distance'] = gdf.distance(center_point)
+
+#     # Set the CRS to WGS84 (EPSG:4326) before transforming
+#     gdf.set_crs(epsg=4326, inplace=True)
+#     gdf.to_crs(epsg=4326, inplace=True)
+
+#     gdf['distance'] = gdf.distance(center_point)
+
+#     # Find the nearest points
+#     nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
+
+#     m = folium.Map(location=[lat, lon], zoom_start=12)
+
+#     folium.Marker(
+#         [lat, lon], 
+#         popup="Current Location", 
+#         icon=folium.Icon(color='red')  # Set marker color
+#     ).add_to(m)
+
+#     # Plot the nearest points
+#     for idx, row in nearest_points.iterrows():
+#         folium.Marker(
+#             location=[row.geometry.y, row.geometry.x],
+#             popup=f"{row['location'].split('-')[-1]}",
+#             icon=folium.Icon(color='blue')
+#         ).add_to(m)
+
+#     # Display the map in Streamlit
+#     st_folium(m, width=600, height=400)
+# else:
+#     st.write("Unable to retrieve location data. Please ensure location services are enabled and try again.")
+
+#_________________________________________________________________________________________________________________________
 
 import requests
 import geopandas as gpd
@@ -157,88 +333,92 @@ import streamlit as st
 from streamlit_folium import st_folium
 from streamlit_geolocation import streamlit_geolocation
 
-
-
 st.title("Bird Observation Hotspot Finder")
 st.write("👉 This page will find the Top 5 bird observation hotspots near you, based on the latest user data from eBird.com ")
 
 # Get the current location
 location = streamlit_geolocation()
 
-lat, lon = location["latitude"], location["longitude"]
+if location and "latitude" in location and "longitude" in location:
+    lat, lon = location["latitude"], location["longitude"]
 
-# lon = 172.5837443
-# lat = -43.5053818
-url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
+    try:
+        lat = float(lat)
+        lon = float(lon)
+        valid_location = True
+    except (ValueError, TypeError):
+        valid_location = False
 
+    if valid_location:
+        url = f"https://api.ebird.org/v2/ref/hotspot/geo?lat={lat}&lng={lon}"
 
+        payload = {}
+        headers = {
+            'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
+        }
 
-payload = {}
-headers = {
-    'X-eBirdApiToken': 'aqf69iukjcqs'  # Replace 'YOUR_API_KEY' with your actual eBird API key
-}
+        response = requests.request("GET", url, headers=headers, data=payload)
+        data = response.text
 
-response = requests.request("GET", url, headers=headers, data=payload)
-#st.write(response.text)
+        # Split the data into lines
+        lines = data.strip().split('\n')
 
-data = response.text
-# Split the data into lines
-lines = data.strip().split('\n')
+        # Extract coordinates from each line
+        coordinates = []
+        locations = []
+        for line in lines:
+            try:
+                parts = line.split(',')
+                latitude = float(parts[4])
+                longitude = float(parts[5])
+                coordinates.append((latitude, longitude))
+                locations.append(parts[6])
+            except (IndexError, ValueError) as e:
+                st.write(f"Error processing line: {line}")
+                st.write(f"Error: {e}")
 
-# Extract coordinates from each line
-coordinates = []
-locations = []
-for line in lines:
-    parts = line.split(',')
-    latitude = float(parts[4])
-    longitude = float(parts[5])
-    coordinates.append((latitude, longitude))
-    locations.append(parts[6])
+        if coordinates:
+            # Create a GeoDataFrame
+            gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
 
-#st.write(coordinates)
-#st.write(locations)
+            # Add the location name into gdf
+            gdf['location'] = locations
 
-# Create a GeoDataFrame
-gdf = gpd.GeoDataFrame(geometry=gpd.points_from_xy([lon for lat, lon in coordinates], [lat for lat, lon in coordinates]))
+            center = (lon, lat)
+            center_point = Point(center)
 
-# add the location name into gdf
-gdf['location'] = locations
+            gdf['distance'] = gdf.distance(center_point)
 
-center = (lon,lat)
+            # Set the CRS to WGS84 (EPSG:4326) before transforming
+            gdf.set_crs(epsg=4326, inplace=True)
+            gdf.to_crs(epsg=4326, inplace=True)
 
-center_point = Point(center)
+            gdf['distance'] = gdf.distance(center_point)
 
-gdf['distance'] = gdf.distance(center_point)
+            # Find the nearest points
+            nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
 
-# Set the CRS to WGS84 (EPSG:4326) before transforming
+            m = folium.Map(location=[lat, lon], zoom_start=12)
 
-gdf.set_crs(epsg=4326, inplace=True)
-gdf.to_crs(epsg=4326, inplace=True)
+            folium.Marker(
+                [lat, lon], 
+                popup="Current Location", 
+                icon=folium.Icon(color='red')  # Set marker color
+            ).add_to(m)
 
-gdf['distance'] = gdf.distance(center_point)
+            # Plot the nearest points
+            for idx, row in nearest_points.iterrows():
+                folium.Marker(
+                    location=[row.geometry.y, row.geometry.x],
+                    popup=f"{row['location'].split('-')[-1]}",
+                    icon=folium.Icon(color='blue')
+                ).add_to(m)
 
-# Find the nearest points
-nearest_points = gdf.nsmallest(5, 'distance')  # Adjust the number of nearest points as needed
-
-#st.write(nearest_points)
-
-m = folium.Map(location=[lat, lon], zoom_start=12)
-
-folium.Marker(
-    [lat, lon], 
-    popup="Current Location", 
-    icon=folium.Icon(color='red')  # Set marker color
-).add_to(m)
-
-# plot the nearest points
-for idx, row in nearest_points.iterrows():
-    folium.Marker(
-        location=[row.geometry.y, row.geometry.x],
-        popup=f"{row['location'].split('-')[-1]}",
-        icon=folium.Icon(color='blue')
-    ).add_to(m)
-
-# Display the map in Streamlit
-st_folium(m, width=600, height=400)
-
-
+            # Display the map in Streamlit
+            st_folium(m, width=600, height=400)
+        else:
+            st.write("No valid coordinates found in the response.")
+    else:
+        st.write("Unable to retrieve valid location data. Please ensure location services are enabled and try again.")
+else:
+    st.write("Unable to retrieve location data. Please ensure location services are enabled and try again.")
