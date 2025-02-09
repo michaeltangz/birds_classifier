@@ -126,7 +126,7 @@ if uploaded_files:
         if st.button("Report"):
             st.markdown("### Thank you for your report. We will review your report shortly.")
     else:
-        st.write("Please enable location services and press the button to get your current location.")
+        st.write("**Please enable location services and press the button to get your current location.**")
 
 # def run():
 #     #st.title(".")
