@@ -478,7 +478,7 @@ if uploaded_file is not None:
 
             # Display the description
             st.write(f"🐤 **Description:** {' '.join(extract.split('.')[:3])}.")
-            st.write(f"👉 [More about {label}](https://en.wikipedia.org/wiki/{label})")
+            st.write(f"👉 [More about {label}](https://en.wikipedia.org/wiki/{convert_label(label)})")
 
         except requests.exceptions.RequestException as e:
             st.write("Failed to retrieve data from Wikipedia API")
@@ -490,4 +490,3 @@ if uploaded_file is not None:
 # add links to wikipedia with the bird name
 
  
-
