@@ -115,7 +115,9 @@ if uploaded_files:
     time = current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     if location:
         lat, lon = location["latitude"], location["longitude"]
-        st.write(f"The suspicious HPAI case: **{', '.join(labels)}**\nLocation: {lat}, {lon}\nTime: {current_time}")
+        st.write(f"**The suspicious HPAI case: {', '.join(labels)}**")
+        st.write(f"**Location:** {lat}, {lon}")
+        st.write(f"**Time:** {current_time}")
 
        
         st.write("Press the button to report the suspicious HPAI case")
